@@ -121,12 +121,12 @@ app.post('/restaurants_List', (req,res) => {
 	res.redirect('/');
 });
 
-const db =client.db(dbname);
+//const db =client.db(dbname);
 
 
+const port = process.env.PORT || 8099;
 
-
-app.listen(process.env.PORT || 8099,()=>{
+app.listen(port,()=>{
 	console.log('Server listening on port 8099');
 });
 
