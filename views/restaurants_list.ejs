@@ -1,0 +1,14 @@
+<html>
+<body>
+    <form action="http://localhost:8099/restaurants_list" method="POST">
+        Restaurants List</br>
+        
+    </form>
+    <ul>
+        <% for(var i=0; i<restaurants.length; i++) { %>
+            <li><%= restaurants[i] %></li>
+        <% } %>
+    </ul>
+    <button type="button" onclick="location.href='/logout' ">Logout</button>
+</body>
+</html>
