@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <form method="POST">
+            <h1>Restaurants List </h1>
+
+            <ol>
+                <% for (const i of restaurants) { %>
+                    <li><a href="/restaurants/show?id=<%= i._id %>"><%= i.name %></a></li>
+                <% } %>
+            </ol>
+
+            
+            <button type="button" onclick="location.href='/home' ">Back to homepage</button>
+        </form>
+    </body>
+</html>
