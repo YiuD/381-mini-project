@@ -7,19 +7,21 @@ var http = require('http');
 var querystring = require('querystring');
 app.set('view engine','ejs');
 
+/*
 //MongoDB
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const ObjectId = require('mongodb').ObjectID;
 const url = 'mongodb+srv://ProjectUser:user@381project.j4gbq.mongodb.net/restaurants?retryWrites=true&w=majority';  // MongoDB Atlas Connection URL
 const dbName = 'restaurants'; // Database Name
- 
+*/
+
 //Session
 const SECRETKEY = 'javascript so difficult arrrrr';
 
 const users = new Array(
-	{name: 'developer', password: 'developer'},
-	{name: 'guest', password: 'guest'}
+	{name: 'demo', password: ''},
+	{name: 'student', password: ''}
 );
 
 
@@ -90,7 +92,7 @@ app.get('/logout', (req,res) => {
 });
 
 
-
+/*
 //Database
 const client = new MongoClient(url);
 
@@ -111,6 +113,7 @@ client.connect(function(err) {
 		client.close();
    });
 });
+*/
 
 app.post('/home',(req,res) => {
 	/*
@@ -125,6 +128,7 @@ app.post('/home',(req,res) => {
 
 app.get("/restaurants/new",(req, res) => {
 	res.render("restaurants/new.ejs");	
+	cost doc = 
 });
 
 app.get("/restaurants/list_all",(req, res) => {
@@ -144,8 +148,21 @@ app.get("/restaurants/delete",(req, res) =>{
     res.render("restaurants/delete.ejs",{id: req.query.id});
   })
 
+/*
+  client.connect((err) => {
+    assert.equal(null, err);
+    console.log("Connected successfully to server");
+	const db = client.db(dbName);
+	
+	/*
+	insertDocument(db, DOC, () => {
+        client.close();
+        console.log("Closed DB connection");
+	})
+	*/
+});
 
-//const db =client.db(dbname);
+
 
 
 const port = process.env.PORT || 8099;
