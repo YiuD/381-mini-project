@@ -153,13 +153,13 @@ app.get("/restaurants/delete",(req, res) =>{
     console.log("Connected successfully to server");
 	const db = client.db(dbName);
 	
-	/*
+	
 	insertDocument(db, DOC, () => {
         client.close();
         console.log("Closed DB connection");
 	})
-	*/
-});
+	
+});*/
 
 
 
