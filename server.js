@@ -128,7 +128,6 @@ app.post('/home',(req,res) => {
 
 app.get("/restaurants/new",(req, res) => {
 	res.render("restaurants/new.ejs");	
-	cost doc = 
 });
 
 app.get("/restaurants/list_all",(req, res) => {
