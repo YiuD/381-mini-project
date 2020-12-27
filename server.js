@@ -85,7 +85,7 @@ app.post('/home',(req,res) => {
 		res.redirect('/');	
 });
 
-/*CURD Function*/ */
+/*CURD Function*/
 const client = new MongoClient(url);
 
 function createRestaurant(res, req){
