@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <form method="POST">
+            <h1>List All Restaurants</h1>
+            <ol>
+                <% for (const i of restaurants) { %>
+                    <li><a href="/restaurant/list?id=<%= i.restaurant_id %>"><%= i.name %></a></li>
+                <% } %>
+            </ol>
+        </form>
+    </body>
+</html>
