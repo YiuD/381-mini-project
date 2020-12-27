@@ -1,80 +1,12 @@
-
 <html>
 <body>
-  <h1>List Restaurant</h1>
+  <h1>List Selected Restaurant/Search results (in JSON)</h1>
+  
+  <%= restaurant %>
 
-  <a href="/restaurant/rate?id=<%= restaurant._id %>">rate</a>
-  <a href="/restaurant/update?id=<%= restaurant._id %>">update</a>
-  <a href="/restaurant/delete?id=<%= restaurant._id %>">delete</a>
-
-  <% for (const msg of messages) { %>
-      <p><%= msg %></p>
-  <% } %>
-
-  <table>
-    <tr>
-      <th>Owner</th>
-      <td><%= restaurant.owner %></td>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <td><%= restaurant.name %></td>
-    </tr>
-    <tr>
-      <th>Borough</th>
-      <td><%= restaurant.borough %></td>
-    </tr>
-    <tr>
-      <th>Cuisine</th>
-      <td><%= restaurant.cuisine %></td>
-    </tr>
-
-    <% if (restaurant.address) { %>
-      <% const addr = restaurant.address %>
-      <tr>
-        <th>Street</th>
-        <td><%= addr.street %></td>
-      </tr>
-      <tr>
-        <th>Building</th>
-        <td><%= addr.building %></td>
-      </tr>
-      <tr>
-        <th>Zipcode</th>
-        <td><%= addr.zipcode %></td>
-      </tr>
-      <% if (addr.coord) { %>
-        <tr>
-          <th>Coord</th>
-          <td>
-              [<%= addr.coord[0] %>, <%= addr.coord[1] %>]
-              <a href="https://www.google.com/maps/search/?api=1&query=<%= addr.coord[0] %>,<%= addr.coord[1] %>">Google Map</a>
-          </td>
-        </tr>
-      <% } %>
-    <% } %>
-  </table>
-
-  <h2>Ratings</h2>
-
-  <table>
-    <tr>
-      <th>User</th>
-      <th>Score</th>
-    </tr>
-    <% for (const {user, score} of restaurant.grades) { %>
-      <tr>
-        <td><%= user %></td>
-        <td><%= score %></td>
-      </tr>
-    <% } %>
-  </table>
-
-  <% if (restaurant.photoMimetype) { %>
-    <img src="/image/?id=<%= restaurant._id %>"
-      width="300"
-      height="200"
-      alt="restaurant pic">
-  <% } %>
+  Options:
+  <a href="/restaurant/rate?id=<%= restaurant._id %>">Rate</a>
+  <a href="/restaurant/update?id=<%= restaurant._id %>">Update</a>
+  <a href="/restaurant/delete?id=<%= restaurant._id %>">Delete</a>
 </body>
 </html>
