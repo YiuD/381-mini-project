@@ -37,7 +37,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//main page
+//Main page
 app.get('/',(req,res) => {
 	console.log(req.session);
 	if (!req.session.authenticated) {    //check if user logined (authenticated==true?)
@@ -127,12 +127,12 @@ function createRestaurant(res, req){
 		try {
 	        assert.equal(err,null);
 	    } catch (err) {
-	        res.status(500).send('MongoClient connection failed!');
+	        res.status(500).send('Connection Failed!');
 	    };      
-	    	console.log('Connected to MongoDB');
+	    	console.log('Connected');
 	      	insertRestaurant(db,query,(result) =>{
 	        client.close();
-	        console.log('Disconnected MongoDB');
+	        console.log('Disconnected');
 	    });	
 	});	
 };
@@ -170,9 +170,9 @@ function listAll(req,res){
 		try {
 			assert.equal(err,null);
 		} catch (err) {
-			res.status(500).send('MongoClient connection failed!');
+			res.status(500).send('Connection failed');
 		};      
-		console.log('Connected to MongoDB');
+		console.log('Connected');
 		db.collection("restaurant").find({}, {name: 1}).toArray((err, restaurants) => { 
 			res.render("restaurant/list_all.ejs", {restaurants});
 		  });
@@ -184,10 +184,10 @@ function deleteRestaurants(res,res) {
 	MongoClient.connect(mongourl,(err,db) => {
 		assert.equal(err,null);
 		console.log(criteria);
-		console.log('Connected to MongoDB\n');
+		console.log('Connected\n');
 		db.collection('restaurant').deleteMany({"_id": ObjectID(req.query.id)},(err,result) => {
 			assert.equal(err,null);
-			console.log("Delete was successfully");
+			console.log("Delete success");
 			db.close();
 			console.log(JSON.stringify(result));
 			res.redirect('/main');
@@ -251,7 +251,7 @@ app.get('/api/restaurant/read/name/:restname',(req,res) =>{
 	    try {
 	        assert.equal(err,null);
 	    } catch (err) {
-	        res.status(500).send('connect failed');
+	        res.status(500).send('Connect failed');
 	    }
 	    result.name = req.params.restname;      
 	    console.log('Connected');
@@ -269,13 +269,13 @@ app.get('/api/restaurant/read/borough/:borname',(req,res) =>{
 	    try {
 	        assert.equal(err,null);
 	    } catch (err) {
-	        res.status(500).send('connect failed');
+	        res.status(500).send('Connect failed');
 	    }
 	    result.name = req.params.borname;      
-	    console.log('Connected to MongoDB');
+	    console.log('Connected');
 	    findRestaurant(db, result,(restaurant) =>{
 	    db.close();
-	    console.log('Disconnected MongoDB');
+	    console.log('Disconnected');
 	    res.status(200).json(restaurant).end();
 	    });
 	});
@@ -286,7 +286,7 @@ app.get('/api/restaurant/read/cuisine/:cuisname',(req,res)=> {
 	      try {
 	        assert.equal(err,null);
 	      } catch (err) {
-	        res.status(500).send('connect failed!');
+	        res.status(500).send('Connect failed');
 	      }
 	      result.name = req.params.cuisname;      
 	      console.log('Connected');
