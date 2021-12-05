@@ -1,4 +1,4 @@
 # 381-mini-project
-by Pun Cho Yiu (12042319)
+by David Pun (xxxxxxxxx)
 
 bugs in function 'list' and can't show the restaurants' detials....
